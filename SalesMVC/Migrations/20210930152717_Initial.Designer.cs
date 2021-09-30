@@ -9,8 +9,8 @@ using SalesMVC.Data;
 namespace SalesMVC.Migrations
 {
     [DbContext(typeof(SalesMVCContext))]
-    [Migration("20210826184026_DepartmentForeignKey")]
-    partial class DepartmentForeignKey
+    [Migration("20210930152717_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,9 +62,12 @@ namespace SalesMVC.Migrations
 
                     b.Property<int>("DepartmentId");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
